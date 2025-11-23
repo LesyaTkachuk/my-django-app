@@ -59,7 +59,7 @@ spec:
           withCredentials([usernamePassword(credentialsId: 'github-token', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PAT')]) {
             sh '''
               git clone --branch lesson-8-9 https://$GIT_USERNAME:$GIT_PAT@github.com/LesyaTkachuk/my-microservice-project.git
-              cd my-microservice-project/lesson-8-9/django-chart            
+              cd my-microservice-project/lesson-8-9/django-app            
 
               sed -i "s/tag: .*/tag: $IMAGE_TAG/" values.yaml
 
