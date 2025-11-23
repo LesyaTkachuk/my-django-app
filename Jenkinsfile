@@ -29,7 +29,7 @@ spec:
 
   environment {
     ECR_REGISTRY = "371235828704.dkr.ecr.us-west-2.amazonaws.com"
-    IMAGE_NAME   = "ecs-hw-7"
+    IMAGE_NAME   = "devops-project"
     IMAGE_TAG    = "v1.0.${BUILD_NUMBER}"
 
     COMMIT_EMAIL = "jenkins@localhost"
@@ -58,8 +58,8 @@ spec:
         container('git') {
           withCredentials([usernamePassword(credentialsId: 'github-token', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PAT')]) {
             sh '''
-              git clone --branch lesson-8-9 https://$GIT_USERNAME:$GIT_PAT@github.com/LesyaTkachuk/my-microservice-project.git
-              cd my-microservice-project/lesson-8-9/django-chart            
+              git clone --branch lesson-10-db https://$GIT_USERNAME:$GIT_PAT@github.com/LesyaTkachuk/my-microservice-project.git
+              cd my-microservice-project/charts/django-app            
 
               sed -i "s/tag: .*/tag: $IMAGE_TAG/" values.yaml
 
@@ -68,7 +68,7 @@ spec:
 
               git add values.yaml
               git commit -m "Update image tag to $IMAGE_TAG"
-              git push origin lesson-8-9
+              git push origin lesson-10-db
             '''
           }
         }
